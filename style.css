@@ -1,0 +1,4231 @@
+/* ==========================================
+  基本設定（リセット・共通スタイル）
+=========================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    letter-spacing: 0.1em;
+}
+
+body {
+    color: #333;
+    line-height: 1.6;
+
+    background: linear-gradient(135deg, #fff 0%, #e2eaf4 100%);
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* --- ヘッダー領域 --- */
+/* ==========================================
+   2. ヘッダー
+   ========================================== */
+.site-header {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+    padding: 16px 32px;
+    width: 100%;
+}
+
+.header-inner {
+    max-width: 1200px;
+    /* 必要に応じて最大幅を設定（画面全幅に伸ばしたい場合はこの行を削除） */
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* ★これで左右に振り分けます */
+}
+
+.site-logo {
+    font-family: 'Jost', sans-serif;
+    font-weight: 700;
+    font-size: 1.55rem;
+    letter-spacing: 0.08em;
+    color: #2d3748;
+    text-decoration: none;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-left: auto;
+}
+
+/* 検索トリガーバー */
+.search-trigger-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.search-dummy-input {
+    width: 140px;
+    padding: 6px 12px 6px 30px;
+    font-size: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    background-color: #f5f5f5;
+    cursor: pointer;
+    pointer-events: none;
+}
+
+.search-trigger-box .search-icon {
+    position: absolute;
+    left: 10px;
+    font-size: 0.8rem;
+    color: #888;
+}
+
+/* アイコンボタン */
+.header-icon-btn {
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    color: #333;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    justify-content: flex-end;
+}
+
+.hamburger-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 24px;
+    height: 20px;
+    padding: 0;
+}
+
+.hamburger-line {
+    width: 70%;
+    height: 2px;
+    background-color: #333;
+    border-radius: 2px;
+}
+
+.filter-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #111;
+}
+
+.filter-group {
+    margin-bottom: 28px;
+}
+
+.filter-group-title {
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+/* 1. フォーマット（イラスト付き） */
+.format-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.format-card input {
+    display: none;
+}
+
+.format-card-content {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 12px 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+}
+
+.format-icon {
+    width: 28px;
+    height: 28px;
+    fill: #666;
+}
+
+.format-card input:checked+.format-card-content {
+    border-color: #111;
+    background-color: #f8f8f8;
+    font-weight: bold;
+}
+
+.format-card input:checked+.format-card-content .format-icon {
+    fill: #111;
+}
+
+/* 2 & 3. サイズ・始まり タグスタイル */
+.tag-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag-chip input {
+    display: none;
+}
+
+.tag-chip span {
+    display: inline-block;
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    border: 1px solid #e0e0e0;
+    background-color: #f9f9f9;
+    color: #444;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.tag-chip input:checked+span {
+    background-color: #333;
+    color: #fff;
+    border-color: #333;
+}
+
+.start-row-label {
+    font-size: 0.75rem;
+    color: #777;
+    margin-bottom: 6px;
+}
+
+/* 5. タブ切り替え（ブランド / シリーズ） */
+.tab-header {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 12px;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 8px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    font-size: 0.85rem;
+    color: #888;
+    cursor: pointer;
+}
+
+.tab-btn.active {
+    color: #111;
+    font-weight: bold;
+    border-bottom-color: #111;
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+/* モーダル下部固定バー */
+.modal-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 12px 16px;
+    background-color: #fff;
+    border-top: 1px solid #eee;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.clear-btn {
+    background: none;
+    border: none;
+    font-size: 0.8rem;
+    color: #666;
+    text-decoration: underline;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.submit-search-btn {
+    flex: 1;
+    background-color: #111;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 24px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #4a5568;
+    font-size: 0.7rem;
+    transition: all 0.2s;
+    align-items: center;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid transparent;
+    /* 枠線も非表示 */
+    outline: none;
+    user-select: none;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    align-items: center;
+    /* 非選択時は背景・影を完全に透明化 */
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+}
+
+/* メインコンテナ */
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 40px 80px;
+}
+
+/* パンくずリストの共通スタイル */
+.breadcrumb {
+    margin: 15px 0 25px 0;
+    font-size: 0.85rem;
+}
+
+.breadcrumb ol {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.breadcrumb li {
+    display: flex;
+    align-items: center;
+    color: #666;
+}
+
+/* 項目間の区切り文字 ( > ) */
+.breadcrumb li:not(:last-child)::after {
+    content: ">";
+    margin: 0 8px;
+    color: #999;
+    font-size: 0.8rem;
+}
+
+/* リンク付き部分の見た目 */
+.breadcrumb a {
+    color: #333;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+/* 現在地のテキスト表示 */
+.breadcrumb li[aria-current="page"] {
+    color: #666;
+    font-weight: bold;
+}
+
+/* ==========================================
+   商品詳細ページの強制2分割レイアウト修正
+   ========================================== */
+.product-detail-wrapper {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    /* 左を少し広く */
+    gap: 60px;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+    background: rgba(255, 255, 255, 0.35);
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    /* 2. 背景のぼかし効果（グラスモフィズムの核） */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    /* Safari対応 */
+    /* 4. ガラスの縁の光を表現する細い枠線 */
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    /* 5. 柔らかい浮き上がり感を出す多重シャドウ */
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.05),
+        /* 外側の広くて薄い影 */
+        inset 0 1px 1px rgba(255, 255, 255, 0.9);
+    /* 内側の白フチ光線 */
+}
+
+/* 全体のコンテナサイズ指定 */
+#product-detail {
+    max-width: 1100px !important;
+    margin: 0 auto !important;
+    padding: 20px !important;
+    box-sizing: border-box !important;
+}
+
+/* PC（画面幅768px以上）で左右2分割 */
+@media screen and (min-width: 768px) {
+    #product-detail {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: flex-start !important;
+        gap: 40px !important;
+    }
+
+    /* 左側の画像エリア：横幅45%に固定 */
+    #product-detail .detail-left {
+        width: 45% !important;
+        max-width: 500px !important;
+        flex-shrink: 0 !important;
+    }
+
+    /* 右側の詳細情報エリア：横幅50% */
+    #product-detail .detail-right {
+        width: 50% !important;
+        flex-grow: 1 !important;
+    }
+}
+
+/* 画像自体の大きさ調整 */
+.main-image-container {
+    width: 100% !important;
+    max-width: 500px !important;
+    margin: 0 auto !important;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+}
+
+.main-image-container img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 500px !important;
+    object-fit: cover !important;
+    object-position: center;
+    display: block !important;
+}
+
+/* ==========================================
+   カラー丸ボタンの形状固定 ＆ 自動折り返し
+   ========================================== */
+/* スウォッチを並べる親要素：入りきらない場合は自動で折り返す */
+.option-swatches {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    /* 横幅を超える場合は次の行に折り返す */
+    gap: 10px !important;
+    /* ボタン同士の間隔 */
+    margin-top: 8px !important;
+}
+
+/* カラー丸ボタン自体の設定：変形を防ぎ完全な正円を維持 */
+.swatch {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    min-height: 34px !important;
+    border-radius: 50% !important;
+    flex-shrink: 0 !important;
+    /* 親要素がつぶれても縦横比を崩さない */
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    /* 淡い色の輪郭線 */
+    cursor: pointer !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    transition: transform 0.15s ease, border-color 0.15s ease !important;
+}
+
+/* 選択中のボタンの強調枠 */
+.swatch.active {
+    outline: 2px solid #000 !important;
+    outline-offset: 2px !important;
+}
+
+/* ==========================================
+   サイズチップのデザイン ＆ スラッシュ線設定
+   ========================================== */
+.option-chips {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    margin-top: 8px !important;
+}
+
+.chip {
+    padding: 10px 16px !important;
+    border: 1px solid #ccc !important;
+    color: #333 !important;
+    font-size: 13px !important;
+    cursor: pointer !important;
+    position: relative !important;
+    overflow: hidden !important;
+    background: rgba(255, 255, 255, 0.4) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+}
+
+.chip.active {
+    border-color: #000 !important;
+    background-color: #000 !important;
+    color: #fff !important;
+    font-weight: bold !important;
+}
+
+/* 選択不可（存在しないサイズ）の見た目 */
+.chip.disabled {
+    background-color: #f5f5f5 !important;
+    color: #aaa !important;
+    border-color: #e0e0e0 !important;
+    cursor: not-allowed !important;
+    opacity: 0.6 !important;
+}
+
+/* 文字の上に重ねる斜めスラッシュ線 */
+.chip.disabled .slash-text {
+    position: relative !important;
+    display: inline-block !important;
+}
+
+.chip.disabled .slash-text::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: -20% !important;
+    width: 140% !important;
+    height: 1.5px !important;
+    background-color: #999 !important;
+    transform: translateY(-50%) rotate(-25deg) !important;
+}
+
+/* アフィリエイトボタンが無効時のグレーアウト */
+.btn-affiliate.is-disabled {
+    opacity: 0.4 !important;
+    pointer-events: none !important;
+    background-color: #ccc !important;
+}
+
+/* 非対応カラースウォッチのスタイル */
+.swatch.disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+    position: relative;
+    border: 1px dashed #999;
+}
+
+/* スウォッチ上の打消し斜線 */
+.swatch.disabled::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -1px;
+    width: 100%;
+    height: 2px;
+    background-color: #ff0000;
+    transform: rotate(-45deg);
+}
+
+/* アコーディオン内の仕様ハイライト */
+.spec-table span.spec-item {
+    display: inline-block;
+    padding: 2px 6px;
+    margin: 2px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+/* 選択されたサイズ・カラーの強調表示 */
+.spec-table span.spec-item.active-spec {
+    background-color: #fff3cd;
+    /* 柔らかい黄色 */
+    color: #856404;
+    font-weight: bold;
+    border: 1px solid #ffeeba;
+}
+
+/* コンテナ設定 */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+/* 商品グリッド基本配置（PCなど広い画面：自動で複数列） */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+/* ------------------------------------------
+   右カラム：商品情報・スペック
+------------------------------------------- */
+/* ブランド・シリーズ名 */
+.brand-series-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #666;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.series-name {
+    font-size: 12px;
+    color: #666;
+}
+
+/* 商品名 */
+.detail-right .product-title {
+    font-size: 24px;
+    font-weight: 700;
+    text-align: left;
+    line-height: 1.35;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+    word-break: auto-phrase;
+}
+
+/* 始まり月・曜日バッジ */
+.specs-brief {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.spec-badge {
+    font-size: 12px;
+    background: #f4f4f5;
+    color: #333;
+    padding: 4px 10px;
+    /* border-radius: 3px; */
+    font-weight: 500;
+}
+
+/* 価格 */
+.price-container {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-bottom: 20px;
+}
+
+.price-label {
+    font-size: 13px;
+    color: #666;
+}
+
+.price-amount {
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+}
+
+.price-tax {
+    font-size: 12px;
+    color: #888;
+}
+
+.divider {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 10px 0 25px;
+}
+
+/* ------------------------------------------
+   オプション選択（サイズ & カラー）
+------------------------------------------- */
+.option-group {
+    margin-bottom: 22px;
+}
+
+.option-label {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 12px;
+    font-weight: inherit;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+    color: #444;
+}
+
+.selected-value {
+    font-weight: 400;
+    color: #444;
+}
+
+/* チップス選択（サイズ） */
+.option-chips {
+    display: flex;
+    gap: 10px;
+}
+
+.chip:hover:not(.disabled) {
+    border-color: #111;
+}
+
+/* ------------------------------------------
+   アフィリエイトボタン・お気に入り
+------------------------------------------- */
+.affiliate-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+    margin-bottom: 12px;
+}
+
+.btn-affiliate {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 10px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: opacity 0.2s ease, transform 0.1s ease;
+}
+
+.btn-affiliate:hover {
+    opacity: 0.9;
+}
+
+.btn-affiliate:active {
+    transform: scale(0.98);
+}
+
+.btn-affiliate span {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.3px;
+}
+
+.btn-affiliate small {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 2px;
+}
+
+/* 各モールカラー */
+.btn-amazon {
+    background-color: #232f3e;
+}
+
+.btn-rakuten {
+    background-color: #bf0000;
+}
+
+/* お気に入りボタン */
+.btn-favorite {
+    width: 100%;
+    padding: 12px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    margin-bottom: 30px;
+    transition: background 0.2s ease;
+}
+
+.btn-favorite:hover {
+    background: #f9f9f9;
+    border-color: #bbb;
+}
+
+/* ------------------------------------------
+   アコーディオン（アコーディオンメニュー）
+------------------------------------------- */
+.accordion-container {
+    border-top: 1px solid #eee;
+}
+
+.accordion-item {
+    border-bottom: 1px solid #eee;
+}
+
+.accordion-header {
+    width: 100%;
+    padding: 18px 0;
+    background: none;
+    border: none;
+    font-size: 14px;
+    font-weight: 700;
+    color: #111;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    text-align: left;
+}
+
+.accordion-header .icon {
+    font-size: 16px;
+    font-weight: 400;
+    color: #666;
+}
+
+.accordion-content {
+    display: none;
+    padding-bottom: 20px;
+    font-size: 13px;
+    color: #444;
+}
+
+/* アコーディオン開状態 */
+.accordion-item.open .accordion-content {
+    display: block;
+}
+
+/* アコーディオン内のスペック表 */
+.spec-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.spec-table th, .spec-table td {
+    padding: 8px 0;
+    border-bottom: 1px dashed #eee;
+    font-size: 13px;
+}
+
+.spec-table th {
+    width: 35%;
+    color: #777;
+    font-weight: 500;
+    text-align: left;
+}
+
+.spec-table td {
+    color: #111;
+    font-weight: 600;
+}
+
+.official-link {
+    display: inline-block;
+    margin-top: 8px;
+    color: #111;
+    font-weight: 700;
+    text-decoration: underline;
+    font-size: 13px;
+}
+
+/* ==========================================
+   3. レスポンシブ対応（スマホ・タブレット）
+=========================================== */
+@media (max-width: 860px) {
+    .site-header {
+        padding: 0 20px;
+    }
+
+    .main-container {
+        padding: 15px 15px 60px;
+    }
+
+    .product-detail-wrapper {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 20px;
+    }
+
+    .detail-left {
+        position: static;
+    }
+
+    .product-title {
+        font-size: 20px;
+    }
+
+    .price-amount {
+        font-size: 24px;
+    }
+
+    .affiliate-actions {
+        flex-direction: column;
+    }
+}
+
+/* 画面幅が狭い時（スマホ・タブレット等）の2カラム表示設定 */
+@media (max-width: 600px) {
+    .product-grid {
+        gap: 12px;
+    }
+
+    /* カード内の余白やフォントサイズをスマホ用に調整 */
+    .card-content {
+        padding: 10px;
+    }
+
+    .product-title {
+        font-size: 0.65rem;
+    }
+
+    .price-tag {
+        font-size: 0.85rem;
+    }
+
+    .badge {
+        bottom: 6px;
+        left: 6px;
+        font-size: 0.65rem;
+        padding: 3px 6px;
+    }
+}
+
+/* すりガラス調のカードパネル */
+.product-card {
+    background: rgba(255, 255, 255, 0.35);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.05),
+        inset 0 1px 1px rgba(255, 255, 255, 0.9);
+    padding: 24px;
+}
+
+.inset-element {
+    background: rgba(230, 235, 242, 0.5);
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.05),
+        inset -2px -2px 5px rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* カードテキストコンテンツ */
+.card-content {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* ブランド名・シリーズ名 */
+.brand-info {
+    font-size: 0.75rem;
+    color: #777;
+    margin-bottom: 4px;
+    display: flex;
+    gap: 8px;
+}
+
+.brand-name {
+    font-weight: 600;
+}
+
+.series-name {
+    position: relative;
+}
+
+.series-name::before {
+    margin-right: 8px;
+    color: #ccc;
+}
+
+/* 商品名 */
+.product-title {
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: #333;
+    margin: 0 0 12px 0;
+    line-height: 1.4;
+    /* 2行までに制限 */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    word-break: keep-all;
+    line-break: anywhere;
+}
+
+/* カラー丸（スウォッチ） */
+.color-swatches {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 12px;
+    min-height: 16px;
+}
+
+.color-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    color: #4a5568;
+    cursor: pointer;
+    transition: all 0.2s;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    /* 枠線も非表示 */
+    outline: none;
+    user-select: none;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.more-count {
+    font-size: 0.7rem;
+    color: #888;
+    margin-left: 2px;
+}
+
+/* 価格表示 */
+.price-tag {
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #111;
+    margin-top: auto;
+    /* 一番下に寄せる */
+}
+
+.tax-text {
+    font-size: 0.8em;
+    font-weight: normal;
+    margin-left: 2px;
+    color: #666;
+}
+
+/* 画像エリアの親要素 */
+.card-image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    /* 正方形に固定 */
+    background-color: #f1f5f9;
+    /* 画像読み込み前・失敗時の薄グレー背景 */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px 8px 0 0;
+}
+
+.card-image-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    padding: 12px;
+    display: block;
+    /* 画像リンク切れ時のaltテキスト（画像準備中）の装飾 */
+    color: #94a3b8;
+    font-size: 13px;
+    text-align: center;
+    line-height: 1;
+}
+
+/* 商品カード画像枠（親要素） */
+.card-image-wrapper,
+.main-image-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    /* 正方形枠 */
+    background-color: #f1f5f9;
+    /* 背景色（ライトグレー） */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 画像タグ（読み込みエラー時の代替テキストスタイル） */
+.card-image-wrapper img,
+.main-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    /* --------------------------------------------------
+   * 画像読み込み失敗時の「左側破綻アイコン」消去と中央寄せ
+   * -------------------------------------------------- */
+    position: relative;
+    color: #94a3b8;
+    /* テキストカラー */
+    font-size: 13px;
+    /* テキストサイズ */
+    font-weight: 500;
+    text-align: center;
+}
+
+/* 画像読み込み失敗時、擬似要素を使ってブラウザ標準アイコンを覆い隠し文字を中央に置く */
+.card-image-wrapper img::before,
+.main-image-container img::before {
+    content: attr(alt);
+    /* alt="画像準備中" の文字列を表示 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f1f5f9;
+    /* 破綻アイコンを背景色で上書きして消す */
+    display: flex;
+    align-items: center;
+    /* 上下中央揃え */
+    justify-content: center;
+    /* 左右中央揃え */
+    color: #94a3b8;
+    font-size: 13px;
+}
+
+/* バッジの配置（画像上に重ねる） */
+.card-image-wrapper .badge-container {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+/* ★ バッジ（タグ）を左下に配置 */
+.badge {
+    position: absolute;
+    bottom: 10px;
+    /* 左下に移動 */
+    left: 10px;
+    z-index: 2;
+    /* 画像より前に表示 */
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    line-height: 1;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+}
+
+/* ボタンのコンテナ（中央寄せ） */
+.more-button-container {
+    text-align: center;
+    margin: 40px 0 20px 0;
+}
+
+/* ボタン本体のスタイル */
+.more-btn {
+    display: inline-block;
+    padding: 14px 40px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: #333;
+    background-color: #fff;
+    border: 2px solid #333;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.more-btn:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+/* ヘッダーロゴのリンク設定 */
+.header-logo {
+    color: inherit;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* 一覧ページのタイトル＆「戻る」リンク部分 */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.back-link {
+    color: #666;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+/* ボタン（aタグ化に伴う表示調整） */
+.more-btn {
+    display: inline-block;
+    padding: 14px 40px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: #333;
+    background-color: #fff;
+    border: 2px solid #333;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.more-btn:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+/* ==========================================
+   2. キーワード検索専用モーダル (オーバーレイ)
+   ========================================== */
+.keyword-search-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    padding: 12px 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 300;
+    display: none;
+    /* 初期状態は非表示 */
+}
+
+.keyword-search-overlay.is-open {
+    display: block;
+}
+
+.keyword-search-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.keyword-search-bar input {
+    flex: 1;
+    padding: 10px 16px;
+    border: 1px solid #333;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    outline: none;
+}
+
+/* ==========================================
+   3. スライドインメニュー（右から左へ開く）
+   ========================================== */
+/* 黒背景オーバーレイ */
+.drawer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 150;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.drawer-overlay.is-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ドロワーメニュー本体 */
+.drawer-menu {
+    position: fixed;
+    top: 0;
+    right: -420px;
+    width: 380px;
+    max-width: 88vw;
+    height: 100vh;
+    /* 明るいすりガラス調背景 */
+    background: rgba(243, 246, 250, 0.85);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-left: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    color: #2c323f;
+    box-sizing: border-box;
+}
+
+/* クラス付与で右から滑り込む */
+.drawer-menu.is-open {
+    right: 0 !important;
+}
+
+.drawer-menu.active {
+    right: 0;
+    overflow: hidden;
+}
+
+
+.drawer-header {
+    padding: 16px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    box-sizing: border-box;
+}
+
+.drawer-title {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.close-btn, .back-btn {
+    background: none;
+    border: none;
+    font-size: 0.9rem;
+    cursor: pointer;
+    color: #333;
+    padding: 4px 8px;
+}
+
+.drawer-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px 16px 100px 16px;
+}
+
+/* こだわり条件から検索ボタン */
+.filter-menu-trigger-box {
+    margin-bottom: 24px;
+}
+
+.filter-menu-btn {
+    width: 100%;
+    padding: 14px 16px;
+    background-color: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+    cursor: pointer;
+    color: #111;
+}
+
+/* カテゴリーリスト（ハンバーガー内） */
+.nav-section {
+    margin-bottom: 24px;
+}
+
+.nav-heading {
+    font-size: 0.8rem;
+    color: #888;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 6px;
+    margin: 0 0 10px 0;
+    letter-spacing: 0.05em;
+}
+
+.nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-list li {
+    margin-bottom: 10px;
+}
+
+.quick-link {
+    color: #333;
+    text-decoration: none;
+    font-size: 0.95rem;
+    display: block;
+    padding: 2px 0;
+    line-height: 1.4;
+}
+
+.quick-link:hover {
+    text-decoration: underline;
+}
+
+/* ブランドリスト（縦並び） */
+.vertical-brand-list li {
+    padding: 2px 0;
+}
+
+/* ==========================================
+   4. こだわり条件専用メニュー（スライドイン）
+   ========================================== */
+.filter-group {
+    margin-bottom: 24px;
+}
+
+.filter-group-title {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 0 0 12px 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 4px;
+}
+
+/* チェックボックス（文字の先頭に配置） */
+.checkbox-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.check-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.check-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    accent-color: #111;
+    cursor: pointer;
+}
+
+.sub-heading {
+    font-size: 0.75rem;
+    color: #888;
+    margin-bottom: 4px;
+}
+
+/* 価格帯スライダー */
+.price-slider-box {
+    padding: 8px 0;
+}
+
+.price-val-display {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 12px;
+    font-size: 1rem;
+}
+
+.range-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.range-inputs input[type="range"] {
+    width: 100%;
+    accent-color: #111;
+    cursor: pointer;
+}
+
+/* フッター固定ボタンエリア */
+.drawer-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 16px;
+    background: #fff;
+    border-top: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-sizing: border-box;
+}
+
+.drawer-footer .clear-btn {
+    background: none;
+    border: none;
+    text-decoration: underline;
+    color: #666;
+    font-size: 0.85rem;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.drawer-footer .submit-btn {
+    flex: 1;
+    background: #111;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 24px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* ==========================================
+   写真上の重ねタグ (ウィークリー・マンスリー複数対応)
+   ========================================== */
+
+.product-image-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #f9f9f9;
+    overflow: hidden;
+}
+
+.product-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 左上に重ねて配置するタグのコンテナ */
+.product-tag-container {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    z-index: 2;
+}
+
+.product-tag {
+    background-color: rgba(17, 17, 17, 0.85);
+    color: #fff;
+    font-size: 0.7rem;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    letter-spacing: 0.03em;
+    width: fit-content;
+}
+
+/* ==========================================
+   商品詳細ページ (detail.html) スタイル
+   ========================================== */
+.detail-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    margin-top: 16px;
+}
+
+.detail-image-box {
+    flex: 1;
+    min-width: 280px;
+    max-width: 450px;
+}
+
+.detail-image-box img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.detail-info-box {
+    flex: 1.2;
+    min-width: 280px;
+}
+
+.detail-brand {
+    font-size: 0.85rem;
+    color: #888;
+    margin: 0 0 6px 0;
+}
+
+.detail-title {
+    font-size: 1.4rem;
+    margin: 0 0 24px 0;
+    line-height: 1.3;
+}
+
+.detail-options {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 32px;
+}
+
+.option-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.option-label {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #555;
+}
+
+.option-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* フォーマット・サイズ・カラー共通選択ボタン */
+.option-btn {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #333;
+}
+
+.option-btn:hover {
+    border-color: #111;
+}
+
+/* 選択された状態 */
+.option-btn.is-selected {
+    background: #111;
+    color: #fff;
+    border-color: #111;
+    font-weight: bold;
+}
+
+.add-to-cart-btn {
+    width: 100%;
+    max-width: 360px;
+    background-color: #111;
+    color: #fff;
+    border: none;
+    padding: 16px;
+    border-radius: 28px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.add-to-cart-btn:hover {
+    opacity: 0.9;
+}
+
+/* チップ同士の幅（間隔）を広げる設定 */
+.option-format-chips,
+.option-size-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    /* 既存の8px程度から 12px（または16px）へ広げる */
+}
+
+.page-title {
+    text-align: center;
+    margin: 30px auto;
+    font-size: 1.65rem;
+
+}
+
+.product-grid-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+/* 写真上のタグ用スタイル */
+.card-image-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    /* 正方形にする場合 */
+    background-color: #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* 画像自体のスタイリング */
+.card-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* 画像読み込みエラー時のalt文字の装飾 */
+    color: #94a3b8;
+    font-size: 13px;
+    text-align: center;
+}
+
+.card-badge {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: #333;
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    border-radius: 2px;
+}
+
+/* ブランド名表示スタイル */
+.card-brand {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 8px;
+}
+
+#product-list {
+    display: grid;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 80px;
+    /* 左右に約カード1枚分のスペース（80px）を開ける */
+    box-sizing: border-box;
+}
+
+
+.badge-layout {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    background-color: #222;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 4px 8px;
+}
+
+/* ウィークリー：水色 */
+.badge-weekly {
+    background-color: #87ceeb;
+    color: #1a365d;
+}
+
+/* デイリー：黄色 */
+.badge-daily {
+    background-color: #fce83a;
+    color: #4a3b00;
+}
+
+/* マンスリー：ピンク */
+.badge-monthly {
+    background-color: #ffb6c1;
+    color: #5c1d24;
+}
+
+/* 全ての商品を見るボタン */
+.btn-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 20px 0 80px 0;
+}
+
+.view-all-wrapper {
+    /* レイアウト */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 38px;
+    margin-top: 20px;
+    border-radius: 30px;
+    /* 背景と同化（背景色を透明〜極薄の半透明にする） */
+    background: rgba(255, 255, 255, 0.4);
+    /* 背景のぼかし効果（すりガラス感） */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    /* ガラスの縁のような非常に薄い白枠 */
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    /* テキストカラー */
+    color: #333;
+    font-size: 14px;
+    font-weight: 550;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+/* ホバー時（マウスを乗せた時） */
+.view-all-wrapper:hover {
+    background: #ffffff;
+    color: #111827;
+    transform: translateY(-1px);
+    box-shadow:
+        0 5px 12px rgba(0, 0, 0, 0.08),
+        0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+/* クリックした時 */
+.view-all-wrapper:active {
+    transform: translateY(0);
+    box-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* ページネーション (list.html) */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin: 50px 0;
+}
+
+/* 共通のボタン・リンクスタイル */
+.page-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #4a5568;
+    cursor: pointer;
+    border: 1px solid transparent;
+    /* 枠線も非表示 */
+    outline: none;
+    user-select: none;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    /* 非選択時は背景・影を完全に透明化 */
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+}
+
+/* -------------------------------------------------------------
+    アクティブ状態（選択中「1」）：1枚目左上のアイコンを模倣したダークカラー
+------------------------------------------------------------- */
+.page-btn.active {
+    background: #1a1e2e;
+    /* 落ち着いたダークネイビー */
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow:
+        0 6px 16px rgba(26, 30, 46, 0.25),
+        0 2px 4px rgba(26, 30, 46, 0.15),
+        inset 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+.page-btn.active:hover {
+    background: #24293e;
+    transform: translateY(-1px);
+    box-shadow:
+        0 8px 20px rgba(26, 30, 46, 0.3),
+        inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+/* ホバー（マウスをのせたとき）のみうっすら背景を表示 */
+.page-btn:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.35);
+    color: #1a202c;
+    border-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+/* 矢印アイコン用サイズ調整 */
+.page-item svg {
+    width: 18px;
+    height: 18px;
+    stroke-width: 2.2;
+}
+
+.badge-container {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    max-width: calc(100% - 16px);
+    z-index: 2;
+}
+
+/* タグを並べるコンテナ（絶対配置で左下に設置） */
+.badge-container {
+    position: absolute !important;
+    bottom: 8px !important;
+    left: 8px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    /* 横並び */
+    flex-wrap: wrap !important;
+    /* 入りきらない場合は折り返し */
+    gap: 6px !important;
+    /* タグ同士の間隔 */
+    max-width: calc(100% - 16px) !important;
+    z-index: 5 !important;
+}
+
+/* 個々のタグ（絶対配置を解除して重ねりを防止） */
+.badge-container .badge {
+    position: static !important;
+    /* absolute を解除 */
+    top: auto !important;
+    left: auto !important;
+    bottom: auto !important;
+    right: auto !important;
+    display: inline-block !important;
+    font-size: 0.55rem !important;
+    font-weight: 700 !important;
+    padding: 6px 12px !important;
+    border-radius:  50px !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+    margin: 0 !important;
+    font-family: 'LINE Seed JP',  sans-serif;
+}
+
+/* 各フォーマットの色付け */
+.badge-container .badge-weekly {
+    background-color: #31A9B8 !important;
+    /* 水色 */
+    color: #fff !important;
+}
+
+.badge-container .badge-daily {
+    background-color: #F5BE41 !important;
+    /* 黄色 */
+    color: #FFF !important;
+}
+
+.badge-container .badge-monthly {
+    background-color: #CF3721 !important;
+    /* ピンク */
+    color: #FFF !important;
+}
+
+/* ==========================================
+   ハンバーガーボタン & 3本線アニメーション
+========================================== */
+.hamburger-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.hamburger-btn .bar {
+    width: 22px;
+    height: 2px;
+    background-color: #333;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* =========================================================
+   ドロワーメニュー（グラスモフィズム & 完全修復版）
+   ========================================================= */
+/* 背景オーバーレイ */
+.drawer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.drawer-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ---------------------------------------------------------
+   ① 上部アイコンヘッダー（アクティブ背景なし・シンプル線画風）
+   --------------------------------------------------------- */
+.drawer-header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 16px 20px;
+    background: transparent;
+}
+
+.header-icons-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* 全アイコン共通のスタイル */
+.icon-btn {
+    background: transparent;
+    border: none;
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #525b6c;
+    /* すっきりしたグレーの線画 */
+    cursor: pointer;
+    transition: all 0.2s ease;
+    outline: none;
+    padding: 0;
+}
+
+/* ホバーした時だけソフトな背景を表示 */
+.icon-btn:hover {
+    background: rgba(220, 228, 238, 0.5);
+    color: #111827;
+}
+
+/* ×（閉じる）ボタン */
+.close-btn {
+    position: relative;
+    margin-left: 4px;
+}
+
+.cross-bar {
+    position: absolute;
+    width: 14px;
+    height: 2px;
+    background-color: currentColor;
+    border-radius: 2px;
+}
+
+.cross-bar:nth-child(1) {
+    transform: rotate(45deg);
+}
+
+.cross-bar:nth-child(2) {
+    transform: rotate(-45deg);
+}
+
+/* ② メニュー本文エリア */
+.drawer-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* 検索バー */
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 14px;
+    padding: 4px 6px 4px 16px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+    transition: all 0.2s ease;
+}
+
+.search-box:focus-within {
+    background: #ffffff;
+    border-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.search-box input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    padding: 8px 0;
+    font-size: 14px;
+    color: #1f2937;
+    outline: none;
+}
+
+.search-submit-btn {
+    background: transparent;
+    border: none;
+    color: #6b7280;
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* フィルター共通ラベル */
+.filter-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.filter-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #8b95a1;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+/* ---------------------------------------------------------
+   【重要修復】COLOR (カラーピッカー)
+   --------------------------------------------------------- */
+.color-picker-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* 元々のラジオ/チェックボックスの丸ポチを非表示にする */
+.color-picker-grid input[type="radio"],
+.color-picker-grid input[type="checkbox"] {
+    display: none !important;
+}
+
+/* カラーボタン（またはラベル）のデザイン */
+.color-picker-grid label,
+.color-picker-grid button,
+.color-picker-grid .color-item {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+    transition: transform 0.2s ease;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+.color-picker-grid label:hover,
+.color-picker-grid button:hover {
+    transform: scale(1.2);
+}
+
+/* ---------------------------------------------------------
+   【重要修復】SIZE / START (チップデザインの修復)
+   --------------------------------------------------------- */
+.chip-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* チェックボックスのポチを非表示 */
+.chip-group input[type="checkbox"],
+.chip-group input[type="radio"] {
+    display: none !important;
+}
+
+/* 要素（button, label, span等）の枠線・背景の標準スタイルをリセットして再適用 */
+.chip-group button,
+.chip-group label,
+.chip-group .chip-item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 14px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.45) !important;
+    border: 1px solid rgba(255, 255, 255, 0.7) !important;
+    font-size: 13px;
+    font-weight: 500;
+    color: #374151 !important;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+    outline: none;
+    box-shadow: none;
+}
+
+.chip-group button:hover,
+.chip-group label:hover {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border-color: #ffffff !important;
+    color: #111827 !important;
+    transform: translateY(-1px);
+}
+
+/* 選択された時 */
+.chip-group input:checked+span,
+.chip-group button.active,
+.chip-group label.active {
+    background: #ffffff !important;
+    border-color: #ffffff !important;
+    color: #111827 !important;
+    font-weight: 700;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* ---------------------------------------------------------
+   【重要修復】LAYOUT (2列グリッド)
+   --------------------------------------------------------- */
+.layout-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+.layout-grid input[type="checkbox"],
+.layout-grid input[type="radio"] {
+    display: none !important;
+}
+
+.layout-grid button,
+.layout-grid label,
+.layout-grid .layout-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 8px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.7) !important;
+    font-size: 13px;
+    color: #374151 !important;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    outline: none;
+}
+
+.layout-grid button:hover,
+.layout-grid label:hover {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border-color: #ffffff !important;
+}
+
+/* ---------------------------------------------------------
+   ブランド / シリーズ タブ切替
+   --------------------------------------------------------- */
+.tab-section {
+    margin-top: 8px;
+    text-decoration: none;
+}
+
+.tab-header {
+    display: flex;
+    background: rgba(220, 228, 238, 0.4);
+    border-radius: 12px;
+    padding: 4px;
+    gap: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 8px;
+    border: none !important;
+    background: transparent !important;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #6b7280 !important;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.tab-btn.active {
+    background: #1a1e2e !important;
+    color: #ffffff !important;
+    box-shadow: 0 3px 8px rgba(26, 30, 46, 0.2);
+    border-radius: 8px;
+}
+
+.tab-content {
+    margin-top: 12px;
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+/* リストアイテム */
+.count-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.count-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 13.5px;
+    color: #374151;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.count-list li:hover {
+    background: rgba(255, 255, 255, 0.6);
+    color: #111827;
+    transform: translateX(2px);
+}
+
+/* ==========================================
+   ① ハンバーガーメニュー UI
+   ========================================== */
+
+.menu-section {
+    margin-bottom: 24px;
+}
+
+.menu-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-sub);
+    margin-bottom: 10px;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 4px;
+}
+
+/* カテゴリリスト（準備中表示） */
+.category-list li {
+    list-style: none;
+    padding: 8px 0;
+    font-size: 0.9rem;
+}
+
+.category-list li.disabled {
+    color: var(--text-light);
+    cursor: not-allowed;
+    display: flex;
+    justify-content: space-between;
+}
+
+.badge-preparing {
+    font-size: 0.75rem;
+    background: #edf2f7;
+    color: #718096;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+/* 縦一列のサイズリスト */
+.size-column-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.size-column-btn {
+    width: 100%;
+    text-align: left;
+    padding: 10px 14px;
+    background: var(--bg-card);
+    border: none;
+    border-radius: var(--radius-sm);
+    box-shadow: 2px 2px 5px #cbd5e1, -2px -2px 5px #ffffff;
+    cursor: pointer;
+}
+
+/* タブ切り替え */
+.tab-header {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 6px;
+    border: none;
+    background: #e2e8f0;
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.tab-btn.active {
+    background: var(--accent-color);
+    color: #fff;
+}
+
+/* 条件指定マルチ検索 */
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.checkbox-label {
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.btn-multi-search {
+    width: 100%;
+    padding: 12px;
+    background: var(--accent-color);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    margin-top: 12px;
+    cursor: pointer;
+}
+
+/* ==========================================
+   ②・③ お気に入り & 比較モード
+   ========================================== */
+.card-fav-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.85);
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    z-index: 5;
+}
+
+.card-fav-btn.active svg {
+    fill: #e53e3e;
+    stroke: #e53e3e;
+}
+
+.btn-compare {
+    padding: 8px 20px;
+    background: #2b6cb0;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.btn-compare.active {
+    background: #dd6b20;
+}
+
+.compare-instruction {
+    background: #feebc8;
+    color: #742a2a;
+    padding: 10px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 16px;
+    text-align: center;
+    font-weight: 700;
+}
+
+/* 比較番号バッジ */
+.compare-badge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(49, 130, 206, 0.6);
+    color: #fff;
+    font-size: 3rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-lg);
+    z-index: 10;
+}
+
+/* 比較用モーダル・テーブル */
+.compare-modal-content {
+    max-width: 900px;
+    width: 90%;
+    max-height: 85vh;
+    overflow-y: auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: var(--radius-lg);
+}
+
+.compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.compare-table th, .compare-table td {
+    border: 1px solid #e2e8f0;
+    padding: 12px;
+    text-align: center;
+    width: 40%;
+}
+
+.compare-table th:first-child {
+    width: 20%;
+    background: #f7fafc;
+}
+
+/* ==========================================
+   ④ 画像準備中 & 詳細ページの左固定
+   ========================================== */
+.no-image-placeholder {
+    width: 100%;
+    height: 280px;
+    background: #e2e8f0;
+    color: #718096;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    border-radius: var(--radius-md);
+}
+
+/* 詳細ページの左固定設定 */
+@media (min-width: 769px) {
+    .product-detail-container {
+        display: flex;
+        gap: 48px;
+        align-items: flex-start;
+    }
+
+    .detail-left {
+        width: 45%;
+        position: sticky;
+        top: 90px;
+        /* スクロールしても固定される位置 */
+    }
+
+    .detail-right {
+        width: 55%;
+    }
+}
+
+/* 価格表示コンテナ（背景なしのフラットなレイアウト） */
+.price-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* 左右に振り分け */
+    padding: 10px 0;
+    margin: 12px 0;
+    background: transparent;
+    /* 背景なし */
+    border: none;
+    box-shadow: none;
+}
+
+.price-left {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+/* 価格の右側に配置するシンプルなお気に入りボタン */
+.fav-detail-btn {
+    background: transparent;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    color: #718096;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: none;
+    transition: color 0.2s ease, transform 0.1s ease;
+}
+
+.fav-detail-btn:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+/* OFF（通常時）：枠線のみ */
+.fav-detail-btn svg path {
+    fill: none;
+    stroke: #64748b;
+    transition: all 0.2s ease;
+}
+
+/* ON（お気に入り登録済み）：塗りつぶし状態 */
+.fav-detail-btn.active svg path {
+    fill: #e11d48 !important;
+    stroke: #e11d48 !important;
+}
+
+/* 通常時 */
+.fav-detail-btn svg,
+.fav-detail-btn svg path {
+    fill: none;
+    stroke: #64748b;
+    transition: all 0.2s ease;
+}
+
+/* お気に入り登録時 (.activeが付いた時) */
+.fav-detail-btn.active svg,
+.fav-detail-btn.active svg path {
+    fill: #e11d48 !important;
+    stroke: #e11d48 !important;
+}
+
+/* --------------------------------------------------
+ * カード右上の「お気に入りボタン」設定
+ * -------------------------------------------------- */
+.card-fav-btn {
+    position: absolute;
+    top: 10px;
+    /* 右端に綺麗に合わせる場合は 0px（必要に応じて微調整） */
+    z-index: 5;
+    background: none !important;
+    /* 背景色を完全に除去 */
+    background-color: transparent !important;
+    border: none;
+    padding: 4px;
+    cursor: pointer;
+    color: #94a3b8;
+    /* デフォルトのアイコン色 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    box-shadow: none;
+    transition: color 0.2s ease, transform 0.15s ease;
+}
+
+.card-fav-btn:hover {
+    color: #1e293b;
+}
+
+/* --------------------------------------------------
+ * お気に入り登録済みの状態 (画面遷移せずアイコンが変化)
+ * -------------------------------------------------- */
+.card-fav-btn.is-active {
+    color: #ef4444;
+    /* 登録済みのアクセントカラー（赤色など） */
+}
+
+.card-fav-btn.is-active svg {
+    fill: currentColor;
+    /* アイコンの内側を塗りつぶす */
+}
+
+/* --------------------------------------------------
+ * 商品カード全体設定
+ * -------------------------------------------------- */
+.product-card {
+    position: relative;
+    /* ボタン配置の基準軸 */
+    display: flex;
+    flex-direction: column;
+    background: transparent;
+    border-radius: 12px;
+    /* 上部に余白（40px〜48px）を作り、中身全体を1段階下げる */
+    padding: 44px 16px 16px 16px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* --------------------------------------------------
+ * 画像枠（1段階下がった位置に配置）
+ * -------------------------------------------------- */
+.card-image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #f1f5f9;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* --------------------------------------------------
+ * 比較モード用スタイル
+ * -------------------------------------------------- */
+/* 案内テキスト */
+.compare-instruction {
+    margin-top: 12px;
+    padding: 10px 16px;
+    background-color: #e2e8f0;
+    color: #334155;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    display: inline-block;
+    animation: fadeIn 0.2s ease;
+}
+
+/* 比較モード中のカード全体のオーバーレイ表示 */
+.is-compare-mode .product-card {
+    cursor: pointer;
+    position: relative;
+}
+
+/* カードのグレーアウト（暗くする） */
+.is-compare-mode .product-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 23, 42, 0.4);
+    /* 暗い半透明マスク */
+    border-radius: 12px;
+    z-index: 10;
+    transition: background-color 0.2s ease;
+}
+
+/* 選択されたカードのグレーアウトを解除 */
+.is-compare-mode .product-card.is-selected::after {
+    background-color: rgba(0, 0, 0, 0);
+    /* マスクを透過 */
+    border: 3px solid #2563eb;
+    /* 選択線（青） */
+}
+
+/* カード真ん中に表示する番号（1, 2）バッジ */
+.compare-badge {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 56px;
+    height: 56px;
+    background-color: #2563eb;
+    /* バッジの背景色（アクセントカラー） */
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: 700;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    pointer-events: none;
+    /* バッジ自体がクリックを妨害しないように */
+}
+
+/* 選択されたカードのみ番号バッジを表示 */
+.product-card.is-selected .compare-badge {
+    display: flex;
+}
+
+/* 例：ボタン内のSVGアイコンの見た目を切り替えるCSS */
+.favorite-btn svg {
+    fill: none;
+    /* デフォルトは枠線のみ */
+    stroke: currentColor;
+}
+
+.favorite-btn.active svg {
+    fill: currentColor;
+    /* activeクラスがついたら塗りつぶし */
+}
+
+/* お気に入りボタン（通常時） */
+.fav-detail-btn svg,
+.fav-detail-btn svg path {
+  fill: none !important;
+  stroke: #64748b !important;
+  transition: all 0.2s ease;
+}
+
+/* お気に入りボタン（アクティブ時：塗り潰し） */
+.fav-detail-btn.active svg,
+.fav-detail-btn.active svg path {
+  fill: #e11d48 !important;   /* 塗り潰しの色（赤・ピンク系） */
+  stroke: #e11d48 !important; /* 枠線の色 */
+}
+
+/* MONTH / DAY の見出しデザインを SIZE や LAYOUT と同じスタイルに統一 */
+.filter-section .filter-title {
+  font-size: 14px;
+  font-weight: bold;
+  color: #666;
+  margin-bottom: 12px;
+  border-bottom: none; /* もし下線がついている場合は削除 */
+  padding-bottom: 0;
+}
+
+/* チップ要素をSIZEなどと同じグリッド・配置にする場合 */
+#drawer-month-list,
+#drawer-day-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* filter-chip の基本スタイル（2枚目のSIZEチップに合わせる） */
+.filter-chip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 8px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.7) !important;
+    font-size: 13px;
+    color: #374151 !important;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    outline: none;
+}
+
+.filter-chip:hover {
+  background: rgba(255, 255, 255, 0.8) !important;
+  border-color: #ffffff !important;
+}
+
+/* ドロワー内のブランド・シリーズのリンク指定 */
+#drawer-brand-list a,
+#drawer-series-list a {
+  text-decoration: none !important; /* 下線を削除 */
+  color: #333333;                   /* 通常時のテキスト色 */
+}
+
+/* 過去にクリックしたリンク（:visited）の色を変化させない */
+#drawer-brand-list a:visited,
+#drawer-series-list a:visited {
+  color: #333333 !important;       /* クリック後も通常時と同じ色を保持 */
+}
+
+/* ホバー時の見た目（お好みで調整してください） */
+#drawer-brand-list a:hover,
+#drawer-series-list a:hover {
+  opacity: 0.7;
+}
+
+/* 無効化（非対応）ボタンの基本スタイル */
+.chip.disabled,
+.chip:disabled,
+.swatch.disabled,
+.swatch:disabled {
+  position: relative !important;
+  opacity: 0.45;
+  cursor: not-allowed;
+  background-color: #f8fafc;
+  color: #94a3b8;
+  border-color: #e2e8f0;
+  pointer-events: none;
+  overflow: hidden; /* はみ出した斜線をカット */
+}
+
+/* ボタン全体を横切る斜線（::before 擬似要素） */
+.chip.disabled::before,
+.chip:disabled::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -20%;          /* 回転時にはみ出さないよう幅を少し広めに確保 */
+  width: 140%;         /* ボタン全体をしっかりカバー */
+  height: 1px;         /* 線の太さ */
+  background-color: #ff0000; /* 線の色 */
+  
+  /* 確実な回転の指定 */
+  display: block;
+  transform: translateY(-50%) rotate(-25deg);
+  transform-origin: center center;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ブランド名・シリーズ名・月曜始まり等のリンクスタイル */
+.spec-link {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.2s ease, text-decoration 0.2s ease;
+}
+
+.spec-link:hover {
+  opacity: 0.7;
+  text-decoration: underline;
+}
+
+/* 始まり月・曜日のバッジ風表示を維持したい場合のスタイル */
+.specs-brief .spec-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  background-color: #f1f5f9;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #475569;
+}
+
+.specs-brief .spec-link:hover {
+  background-color: #e2e8f0;
+  text-decoration: none;
+}
+
+/* モーダル基本スタイル */
+.compare-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+}
+.compare-modal.is-open {
+  display: block;
+}
+.compare-modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+.compare-modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 1200px;
+  max-height: 85vh;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* 比較モーダルのヘッダーエリア */
+.compare-modal-header {
+  display: flex;
+  justify-content: flex-end; /* 右寄せにしてバツボタンだけ配置 */
+  align-items: center;
+  padding: 12px 16px;
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* 右上のバツ（閉じる）ボタン */
+.compare-modal-close {
+  background: transparent;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.compare-close-btn:hover {
+  background-color: #f1f5f9;
+  color: #0f172a;
+}
+
+/* スクロールエリア */
+.compare-modal-body {
+  padding: 20px;
+  overflow-x: auto;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* 比較テーブル */
+.compare-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  min-width: 600px;
+}
+
+.compare-table th, 
+.compare-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e2e8f0;
+  border-right: 1px solid #e2e8f0;
+  text-align: center;
+  vertical-align: middle;
+  background: #fff;
+  white-space: nowrap;
+}
+
+/* 左端の固定項目列 (sticky) */
+.compare-table th.sticky-col,
+.compare-table td.sticky-col {
+  position: sticky;
+  left: 0;
+  z-index: 10;
+  background-color: #f1f5f9;
+  font-weight: bold;
+  text-align: left;
+  min-width: 140px;
+  max-width: 180px;
+  border-right: 2px solid #cbd5e1;
+}
+
+.compare-table th.sticky-col {
+  z-index: 11;
+}
+
+/* 各商品列の幅設定 */
+.compare-table .product-col {
+  min-width: 200px;
+  max-width: 240px;
+}
+
+.compare-product-img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 8px;
+}
+
+.compare-product-title {
+  font-weight: bold;
+  font-size: 0.95rem;
+  white-space: normal;
+  word-break: break-all;
+}
+
+.remove-fav-btn {
+  margin-top: 8px;
+  background: #ef4444;
+  color: #fff;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+.remove-fav-btn:hover {
+  background: #dc2626;
+}
+
+/* ヘッダーセルのスタイル調整 */
+.compare-product-header {
+  vertical-align: top;
+  padding: 16px 12px;
+}
+
+.compare-product-img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  margin: 0 auto 8px auto;
+  display: block;
+}
+
+.compare-brand-name {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin-bottom: 2px;
+  font-weight: bold;
+}
+
+.compare-series-name {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-bottom: 4px;
+}
+
+.compare-product-title {
+  font-size: 0.9rem;
+  font-weight: bold;
+  line-height: 1.3;
+  margin-bottom: 8px;
+  white-space: normal;
+  word-break: break-all;
+}
+
+.compare-product-title a {
+  color: #1e293b;
+  text-decoration: none;
+}
+
+.compare-product-title a:hover {
+  text-decoration: underline;
+}
+
+/* カラーチップ配置 */
+.compare-color-swatches {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+/* 比較テーブル全体のレイアウト計算を固定方式に変更 */
+.compare-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: max-content; /* 列数に応じて横長に拡張 */
+  table-layout: fixed; /* 全ての列幅を指定サイズに固定 */
+}
+
+/* 左端の項目固定列 */
+.compare-table td.product-col,
+.compare-table th.product-col {
+  width: 220px !important;
+  min-width: 220px !important;
+  max-width: 220px !important;
+  box-sizing: border-box;
+  padding: 12px 10px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: normal;
+  overflow: hidden;
+
+  /* 文節を考慮した自然な改行 */
+  word-break: auto-phrase;
+  overflow-wrap: anywhere;
+}
+
+.compare-table th.sticky-col {
+  width: 150px !important;
+  min-width: 150px !important;
+  max-width: 150px !important;
+  box-sizing: border-box;
+  
+  /* 文節を考慮した自然な改行 */
+  word-break: auto-phrase;
+  overflow-wrap: anywhere;
+}
+
+/* 商品を表示する縦の列（すべて同じ幅に統一） */
+.compare-table .product-col {
+  width: 220px;       /* 全商品列の固定幅 */
+  min-width: 220px;
+  max-width: 220px;
+  box-sizing: border-box;
+  text-align: center;
+  vertical-align: middle;
+  padding: 12px 16px;
+  border-bottom: 1px solid #e2e8f0;
+  border-right: 1px solid #e2e8f0;
+  background: #fff;
+}
+
+/* ヘッダーセルのテキスト折り返し・溢れ制御 */
+.compare-product-header {
+  vertical-align: top;
+}
+
+.compare-product-title,
+.compare-brand-name,
+.compare-series-name {
+  max-width: 100%;
+  word-break: auto-phrase;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.compare-product-title {
+  font-size: 0.9rem;
+  font-weight: bold;
+  line-height: 1.35;
+  margin-bottom: 8px;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+/* 画像コンテナと右上ゴミ箱ボタン */
+.compare-img-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 120px;
+  margin: 0 auto 8px auto;
+}
+
+.compare-product-img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  display: block;
+}
+
+/* 右上ゴミ箱削除ボタン */
+.compare-delete-btn {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  transition: all 0.2s ease;
+  z-index: 5;
+}
+
+.compare-delete-btn:hover {
+  background: #ef4444;
+  color: #ffffff;
+  border-color: #ef4444;
+}
+
+/* 公式サイトリンク */
+.compare-official-link {
+  color: #2563eb;
+  text-decoration: underline;
+  font-size: 0.85rem;
+}
+.compare-official-link:hover {
+  color: #1d4ed8;
+}
+
+/* アフィリエイトボタンエリア */
+.affiliate-btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 4px 0;
+}
+
+/* Amazon ボタン (オレンジ系) */
+.btn-amazon {
+  background-color: #ff9900;
+}
+
+/* 楽天市場 ボタン (赤系) */
+.btn-rakuten {
+  background-color: #bf0000;
+}
+
+/* ==========================================
+   比較テーブル：はみ出し防止・サイズ固定強化
+   ========================================== */
+
+/* テーブル全体 */
+.compare-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: max-content;
+  table-layout: fixed; /* 列幅を固定計算 */
+}
+
+/* 項目固定列（左端） */
+.compare-table th.sticky-col {
+  width: 150px !important;
+  min-width: 150px !important;
+  max-width: 150px !important;
+  box-sizing: border-box;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+/* 商品データ列（すべて同じ幅に厳密に固定） */
+.compare-table td.product-col,
+.compare-table th.product-col {
+  width: 220px !important;
+  min-width: 220px !important;
+  max-width: 220px !important;
+  box-sizing: border-box;
+  padding: 12px 10px; /* 内側の余白をやや小さく調整 */
+  text-align: center;
+  vertical-align: middle;
+  
+  /* セル内の全テキスト自動折り返し＆はみ出し切捨て保証 */
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  white-space: normal;
+  overflow: hidden; 
+}
+
+/* ------------------------------------------
+   各要素のはみ出し防止調整
+   ------------------------------------------ */
+
+/* 1. 画像 wrapper & 画像本体 */
+.compare-img-wrapper {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  margin: 0 auto 8px auto;
+}
+
+.compare-product-img {
+  max-width: 100%;
+  height: 120px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+/* 2. 商品名・テキストリンク */
+.compare-product-title,
+.compare-brand-name,
+.compare-series-name {
+  max-width: 100%;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+/* 3. 公式サイトなどの長体リンク */
+.compare-official-link {
+  display: inline-block;
+  max-width: 100%;
+  word-break: break-all; /* URL等が途中で折り返されるように */
+  overflow-wrap: anywhere;
+  color: #2563eb;
+  text-decoration: underline;
+  font-size: 0.85rem;
+}
+
+
+/* 5. カラーチップ一覧のはみ出し制御 */
+.compare-color-swatches {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px;
+  max-width: 100%;
+  margin-top: 6px;    
+}
+
+.nav-btn {
+    /* レイアウト */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 38px;
+    margin-top: 20px;
+    border-radius: 30px;
+    /* 背景と同化（背景色を透明〜極薄の半透明にする） */
+    background: #1d4ed8;
+    /* 背景のぼかし効果（すりガラス感） */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    /* テキストカラー */
+    color: #333;
+    font-size: 14px;
+    font-weight: 550;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.nav-btn:hover {
+    background: #ffffff;
+    color: #111827;
+    transform: translateY(-1px);
+    box-shadow:
+        0 5px 12px rgba(0, 0, 0, 0.08),
+        0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+/* クリックした時 */
+.nav-btn:active {
+    transform: translateY(0);
+    box-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* ブランド名とシリーズ名の横並びラッパー */
+.compare-brand-series {
+  display: flex;
+  flex-wrap: wrap; /* 長い場合は中央揃えのまま2行に折り返し */
+  justify-content: center;
+  align-items: center;
+  gap: 4px 6px; /* 横と縦の間隔 */
+  margin-bottom: 4px;
+  font-size: 0.75rem;
+  color: #64748b;
+  word-break: auto-phrase;
+  overflow-wrap: anywhere;
+}
+
+/* ブランド名 */
+.compare-brand-name {
+  font-weight: 600;
+}
+
+/* シリーズ名（ブランド名の後ろに区切り線や括弧を付けたい場合にも対応） */
+.compare-series-name {
+  color: #64748b;
+}
+
+/* もしブランドとシリーズの間に区切り文字（ / など）を入れたい場合 */
+.compare-brand-name + .compare-series-name::before {
+  content: "/";
+  margin-right: 4px;
+  color: #cbd5e1;
+}
+
+/* ==========================================
+   商品画像スライドショー
+   ========================================== */
+/* 各スライド */
+
+/* 1. 背景のボカシ画像 */
+.slide::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  filter: blur(20px) brightness(0.9);
+  opacity: 0.6;
+}
+
+
+
+.hero-slideshow {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto 24px auto;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+
+.slide a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.slideshow-track {
+  display: flex;
+  gap: 16px; /* カード間の余白 */
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  flex: 0 0 260px; /* 1枚あたりの幅を指定 */
+  box-sizing: border-box;
+}
+
+.slide img {
+  width: 100%;
+  height: 260px; /* 正方形を維持 */
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+
+
+/* ==========================================
+   複数枚表示カード型スライドショー
+   ========================================== */
+
+
+/* トラック（アニメーション領域） */
+.multi-slideshow .slideshow-track {
+  display: flex;
+  gap: 16px; /* カード同士の間隔 */
+  transition: transform 0.4s ease-in-out;
+  will-change: transform;
+}
+
+/* 個々の商品カード */
+.multi-slide-card {
+  /* PC表示：4枚並べる指定（計算: (100% - 間隔3個分) / 4） */
+  flex: 0 0 calc((100% - 48px) / 4);
+  box-sizing: border-box;
+  background: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.multi-slide-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.multi-slide-card a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 400x400の画像を崩さず綺麗に見せる枠 */
+.multi-slide-img-wrapper {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* 完全な正方形を保持 */
+  overflow: hidden;
+  background-color: #f8f9fa;
+}
+
+.multi-slide-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 正方形枠にピッタリ納める */
+  display: block;
+}
+
+/* カード内の商品情報（必要に応じて追加） */
+.multi-slide-info {
+  text-align: center;
+  padding: 10px 12px;
+}
+
+.multi-slide-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+}
+
+/* レスポンシブ設定 */
+@media (max-width: 992px) {
+  .multi-slide-card {
+    /* タブレット：3枚表示 */
+    flex: 0 0 calc((100% - 32px) / 3);
+  }
+}
+
+@media (max-width: 600px) {
+  .multi-slide-card {
+    /* スマホ：2枚表示（チラ見せ感を出して横スクロールを意識させる） */
+    flex: 0 0 calc((100% - 16px) / 2.2);
+  }
+  .multi-slideshow {
+    padding: 0 8px;
+  }
+}
+
+/* 操作ボタン */
+.multi-slideshow .slide-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #eee;
+  color: #333;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.multi-slideshow .prev-btn { left: 4px; }
+.multi-slideshow .next-btn { right: 4px; }
+
+/* スマホ表示時の高さ調整 */
+@media (max-width: 768px) {
+  .slide img {
+    height: 220px;
+  }
+}
+
+/* 前へ・次へボタン */
+.slide-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  color: #333;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s, color 0.2s;
+  z-index: 10;
+}
+
+.slide-btn:hover {
+  background: #ffffff;
+  color: #000;
+}
+
+.prev-btn { left: 12px; }
+.next-btn { right: 12px; }
+
+/* インジケーター（ドット） */
+.slideshow-dots {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.dot {
+  width: 100px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.dot.is-active {
+  background: #ffffff;
+  transform: scale(1.2);
+}
+
+@keyframes infinite-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* 全カードの幅の半分（1周分）左へ移動 */
+    transform: translateX(-50%);
+  }
+}
+
+/* ==========================================
+   シームレス（ぬるぬる）無限スクロール
+   ========================================== */
+
+.multi-slideshow {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 32px;
+}
+
+.multi-slideshow .slideshow-track {
+  display: flex;
+  /* 25秒で1周。速くしたい場合は 15s や 20s に変更 */
+  animation: seamless-scroll 25s linear infinite;
+  will-change: transform;
+}
+
+/* ホバーで一時停止（商品を選択しやすくする） */
+.multi-slideshow:hover .slideshow-track {
+  animation-play-state: paused;
+}
+
+/* 個々のカード設定 */
+.multi-slide-card {
+  width: 220px; /* カードの幅を固定値にするのが一番カクつきにくいです */
+  margin-right: 16px; /* gapの代わりにmargin-rightを使用 */
+  flex-shrink: 0;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.multi-slide-img-wrapper {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #f8f9fa;
+}
+
+.multi-slide-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes seamless-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
+/* ==========================================
+   フッター
+   ========================================== */
+
+.site-footer {
+  background-color: #000;
+  color: #fff;
+  padding: 60px 20px 20px;
+  text-align: left;
+}
+
+/* Gridレイアウトでエリアと幅をコントロール */
+.footer-inner {
+  max-width: 1000px;
+  margin: 0 auto 40px;
+  display: grid;
+  /* 3等分 (1:1:1) */
+  grid-template-columns: repeat(3, 1fr);
+  /* 1列目:logo / 2列目:catalog / 3列目:info(一番右) */
+  grid-template-areas:
+    "logo    catalog info"
+    "logo    disc    disc";
+  gap: 20px 40px; /* 上下間隔 20px / 左右間隔 40px */
+  align-items: start;
+}
+
+/* 各要素のエリア割り当て（クラス名が合っているかご確認ください） */
+.footer-left,
+.footer-brand { /* クラス名が footer-brand の場合はこちらが効きます */
+  grid-area: logo;
+  width: 100%;
+}
+
+.footer-catalog {
+  grid-area: catalog;
+  width: 100%;
+}
+
+.footer-info {
+  grid-area: info;
+  width: 100%;
+}
+
+.footer-disclaimer {
+  grid-area: disc; /* 2列目（catalog）と 3列目（info）の下側に広がる */
+  margin-top: 10px;
+}
+
+/* デザイン装飾 */
+.footer-logo {
+  font-size: 3.25rem;
+  font-weight: bold;
+  font-family: 'Jost', sans-serif;
+  margin: 0 0 28px 0;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+}
+
+.footer-logo p{
+  font-size: 1.25rem;
+  font-family: 'Jost', sans-serif;
+  margin: 0 0 16px 0;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+}
+
+.footer-catch {
+  font-size: 0.75rem;
+  margin: 0 0 24px 0;
+  opacity: 0.8;
+  letter-spacing: 0.05em;
+  line-height: 2em;
+}
+
+.sns-link {
+  display: flex;
+  gap: 16px;
+}
+
+.sns-link svg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2.2;
+  fill: #999;
+}
+
+.footer-nav h4 {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  margin: 0 0 12px 0;
+  color: #999;
+}
+
+.footer-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+
+.footer-nav a:hover {
+  opacity: 0.6;
+  text-decoration: underline;
+}
+
+.footer-disclaimer p {
+  font-size: 0.70rem;
+  line-height: 1.6;
+  margin: 0;
+  color: #999;
+  text-align: left;
+}
+
+/* コピーライト */
+.footer-copyright {
+  border-top: 1px solid #2a2a2c;
+  font-size: 0.75rem;
+  opacity: 0.7;
+  padding: 22px 32px 0;
+  margin: 0 auto;
+  text-align: center;
+}
+
+@media (max-width: 860px) {
+  .footer-inner {
+    /* 左（ロゴ）と右（ナビ群）の2列にし、下段（免責）を横いっぱいに配置 */
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "logo catalog"
+      "logo info"
+      "disc disc";
+    gap: 24px 30px;
+  }
+
+  .footer-disclaimer {
+    margin-top: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-inner {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "logo"
+      "catalog"
+      "info"
+      "disc";
+    gap: 32px;
+  }
+}
+
+/* 情報提供用ボタン（メインCTA） */
+.form-btn-primary {
+  display: inline-block;
+  background-color: #736354; /* 落ち着いたブラウン */
+  color: #ffffff;
+  padding: 14px 28px;
+  border-radius: 30px;      /* 丸みのあるピル型 */
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: all 0.2s ease;
+}
+
+.form-btn-primary:hover {
+  background-color: #5a4d41;
+  transform: translateY(-2px);
+}
+
+.info::after {
+    content: '';
+    height: 1px;
+    width: 30px;
+    display: block;
+    background-color: #333;
+    position: absolute;
+    left: 50%;
+    bottom: 15px;
+    transform: translateX(-50%);
+}
+
+.content {
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 45px 25px 40px;
+    color: #333;
+    font-size: 1rem;
+}
+
+.con-title {
+    font-size: 1.5rem;
+    margin: 20px 0 15px 0;
+    letter-spacing: .1rem;
+    position: relative;
+}
+
+.con-title:after {
+    content: '';
+    height: 1px;
+    width: 8px;
+    display: block;
+    background-color: #444;
+    position: absolute;
+    left: -12px;
+    top: 20px;
+}
+
+.con-text {
+    font-size: 0.75rem;
+    margin-bottom: 18px;
+    letter-spacing: .2rem;
+    text-align: justify;
+    line-height: 2.0;
+}
+
+.info-wrapper {
+    justify-content: center;
+    text-align: center;
+    width: 800px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    margin: 0 auto 30px;
+    padding: 32px;
+    border-radius: 12px;
+}
+
+.info-wrapper .info-tile {
+    font-size: 1.5rem;
+    margin: 20px 0 15px 0;
+    letter-spacing: .1rem;
+    position: relative;
+}
+
+.info-wrapper p {
+    font-size: 0.75rem;
+    letter-spacing: .2rem;
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+@media (max-width: 860px) {
+  .info-wrapper {
+    width: 500px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+  }
+
+  .info-wrapper .info-tile {
+    font-size: 1.15rem;
+    margin: 20px 0 15px 0;
+  }
+
+  .info-wrapper p {
+    font-size: 0.7rem;
+  }
+
+  .info-wrapper .view-all-wrapper {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .info-wrapper {  
+    width: 270px;
+    padding: 32px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+  }
+
+  .info-wrapper .info-tile {
+    font-size: 1.05rem;   
+  }
+
+  .info-wrapper p {
+    font-size: 0.62rem;
+  }
+
+  .info-wrapper .view-all-wrapper {
+    font-size: 0.7rem;
+  }
+}
+
+/* カード一覧グリッド（2列で並べる） */
+.format-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+  gap: 20px;
+  margin-top: 24px;
+}
+
+/* カード全体の基本構造 */
+/* カード全体（左右のコンテンツを均等分割） */
+.format-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center; /* 垂直方向も中央揃え */
+  border-radius: 12px;
+  padding: 24px;
+  text-decoration: none;
+  color: #333333;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+  min-height: 180px;
+  overflow: hidden;
+}
+
+/* 左側のテキストエリア（カード幅の約50%） */
+.format-card-content {
+  flex: 1;
+  padding-right: 16px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  align-items: flex-start;
+  min-width: 0; /* テキストの溢れ防止 */
+}
+
+/* 右側の画像エリア（カード幅の約50%） */
+.format-card-image {
+  flex: 1;             /* 左側と同じ比率（50%ずつ）にする */
+  width: 100%;
+  max-width: 50%;      /* 最大でもカードの半分に設定 */
+  padding: 6px;
+  box-sizing: border-box;
+}
+
+.dummy-image-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 4px;
+  background-color: #f0f0f0;
+}
+
+.preview-page {
+  flex: 1;
+  background-color: #ffffff;
+  border: 1px solid #e2e2e2;
+  border-radius: 2px;
+}
+
+/* --------------------------------------------------
+ * スマホ幅（600px以下）の表示調整
+ * -------------------------------------------------- */
+@media (max-width: 600px) {
+  .format-guide-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .format-card {
+    padding: 16px;
+    min-height: auto;
+  }
+
+  .format-card-content {
+    padding-right: 10px;
+  }
+
+}
+
+/* --------------------------------------------------
+ * 指定の色分けテーマ (赤系 / 水色系 / 黄色系 / デフォルト)
+ * -------------------------------------------------- */
+
+/* 1. マンスリー：赤系 (くすみ赤・サーモンピンク) */
+.theme-monthly {
+  background-color: #F6A39E;
+}
+.theme-monthly .format-badge {
+  border: 1px solid #C85D57;
+  color: #333;
+}
+
+/* 2. ウィークリー：水色系 (爽やかな淡い水色) */
+.theme-weekly {
+  background-color: #BFDCF2;
+}
+.theme-weekly .format-badge {
+  border: 1px solid #6392B7;
+  color: #333;
+}
+
+/* 3. デイリー：黄色系 (パステルイエロー) */
+.theme-daily {
+  background-color: #F8E56B;
+}
+.theme-daily .format-badge {
+  border: 1px solid #C0AF2F;
+  color: #333;
+}
+
+/* その他デフォルト：くすみグリーン */
+.theme-default {
+  background-color: #C2E2C8;
+}
+.theme-default .format-badge {
+  border: 1px solid #73A37C;
+  color: #333;
+}
+
+/* --------------------------------------------------
+ * カード左側のテキストエリア
+ * -------------------------------------------------- */
+ .format-guide-section {
+    padding: 24px;
+    margin: 0 auto 30px;
+ }
+/* 左側のテキストエリア全体を左揃えに固定 */
+.format-card-content {
+  flex: 1;
+  padding-right: 16px;
+  display: flex;
+  flex-direction: column;
+  text-align: left; /* 文章を左揃え */
+  align-items: flex-start; /* 要素全体を左に寄せる */
+  text-decoration: none;
+  border: none;             /* ★枠線を消す */
+  padding: 12px 16px;
+}
+
+/* タグ（バッジ）のコンテナも左寄せに固定 */
+.format-badge {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* 左端から並べる */
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 12px;
+}
+
+/* タイトルと説明文の左揃え指定 */
+.format-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: 0 0 12px 0;
+  color: #222222;
+  line-height: 1.2;
+  text-align: left;
+  width: 100%;
+}
+
+.format-desc {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: #444444;
+  margin: 0;
+  text-align: left;
+  width: 100%;
+}
+
+
+
+.preview-page {
+  flex: 1;
+  background-color: #ffffff;
+  border: 1px solid #e2e2e2;
+  border-radius: 1px;
+}
+
+.sort-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 16px 0 24px;
+  font-size: 14px;
+  color: #333;
+}
+
+.sort-container select {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.sort-container select:focus {
+  border-color: #555;
+}

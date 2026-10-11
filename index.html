@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=LINE+Seed+JP&family=M+PLUS+Rounded+1c&family=Zen+Kaku+Gothic+New:wght@500&display=swap" rel="stylesheet">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATTIC</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">ATTIC</a>
+      
+      <div class="header-actions">
+        <!-- 1. キーワード検索（クリックでモーダル表示） -->
+      <!-- 検索ボタン -->
+      <button type="button" class="icon-btn" aria-label="検索">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </button>
+
+        <!-- 2. お気に入り -->
+      <button type="button" class="icon-btn" onclick="location.href='favorite.html';" aria-label="お気に入り">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+        </svg>
+      </button>
+
+        <!-- 3. ハンバーガーボタン -->
+        <button type="button" class="header-icon-btn" id="open-menu-btn" aria-label="メニューを開く">
+          <div class="hamburger-btn">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- メインコンテンツ（商品一覧エリア） -->
+  <main class="main-content">
+    <div class="page-title">商品一覧</div>
+
+    <!-- スライドショーエリア -->
+    <div class="multi-slideshow">
+      <div class="slideshow-track" id="multi-slideshow-track">
+      </div>
+      <!-- ナビゲーションボタン -->
+      <button type="button" class="slide-btn prev-btn" id="multi-prev-btn" aria-label="前へ">❮</button>
+      <button type="button" class="slide-btn next-btn" id="multi-next-btn" aria-label="次へ">❯</button>
+    </div>
+    <!-- インジケーター（ドット） -->
+    <div class="slideshow-dots" id="slideshow-dots"></div>
+
+    <div class="btn-container">
+      <a href="list.html">
+        <button class="view-all-wrapper">全てのアイテムを見る</button>
+      </a>
+    </div>
+
+    <!-- フォーマットから -->
+    <section class="format-guide-section">
+        <div class="page-title">フォーマットから探す</div>
+        <div id="format-guide-container" class="format-guide-grid"></div>
+    </section>
+
+    <!-- サイズから -->
+    <section class="format-guide-section">
+        <div class="page-title">サイズから探す</div>
+        <div id="format-guide-container" class="format-guide-grid"></div>
+    </section>
+
+    <!-- 情報提供呼びかけ -->
+    <div class="info-wrapper">
+    <div class="info-tile">情報提供について</div>
+    <p>
+      現在、ATTICでは未掲載の手帳情報を募集しています。<br>
+      「こんな手帳もあるよ！」「載せてほしい！」という情報がありましたらお気軽にご連絡をお願いいたします。<br>
+      匿名・アドレス不要で送っていただけます。
+    </p>
+    <p>
+      ※データベースの重複を防ぐため、すでにサイトに掲載されている手帳についての重複送信はご遠慮ください。<br>
+      （掲載状況はサイト内検索より事前にご確認いただけます）
+    </p>
+    <a href="https://forms.gle/e5zEDPb8fkNQuRz68" target="_blank">
+      <btn class="view-all-wrapper">手帳の情報を送る →</btn>
+    </a>
+  </div>
+
+  </main>
+  
+
+<!-- オーバーレイ背景 -->
+<div id="drawer-overlay" class="drawer-overlay"></div>
+
+<!-- ドロワーメニュー本体 -->
+<aside id="drawer-menu" class="drawer-menu">
+  
+  <!-- ① 上部アイコンヘッダー -->
+  <div class="drawer-header">
+    <div class="header-icons-right">
+      <!-- 検索ボタン -->
+      <button type="button" class="icon-btn" aria-label="検索">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </button>
+
+      <!-- お気に入りボタン -->
+      <button type="button" class="icon-btn" onclick="location.href='favorite.html';" aria-label="お気に入り">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+        </svg>
+      </button>
+
+      <!-- アカウントボタン -->
+      <button type="button" class="icon-btn" aria-label="アカウント">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+      </button>
+
+      <!-- 閉じる（×）ボタン -->
+      <button type="button" id="close-menu-btn" class="icon-btn close-btn" aria-label="閉じる">
+        <span class="cross-bar"></span>
+        <span class="cross-bar"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ② JSONから自動生成するエリア -->
+  <div class="drawer-body">
+    
+    <!-- キーワード検索バー -->
+    <div class="search-box">
+      <input type="text" placeholder="キーワード検索" id="drawer-keyword-input">
+      <button type="button" class="search-submit-btn" aria-label="検索実行">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </button>
+    </div>
+
+        <!-- カラー -->
+    <div class="filter-section">
+      <div class="filter-label">Color</div>
+      <div class="color-picker-grid" id="drawer-color-list"></div>
+    </div>
+
+    <!-- サイズ -->
+    <div class="filter-section">
+      <div class="filter-label">Size</div>
+      <div class="chip-group" id="drawer-size-list"></div>
+    </div>
+
+    <!-- レイアウト（フォーマット） -->
+    <div class="filter-section">
+      <div class="filter-label">Layout</div>
+      <div class="layout-grid" id="drawer-layout-list"></div>
+    </div>
+
+    <!-- MONTHの見出しと領域 -->
+    <div class="filter-section">
+      <div class="filter-label">MONTH</div>
+      <div id="drawer-month-list" class="filter-chips"></div>
+    </div>
+
+    <!-- DAYの見出しと領域 -->
+    <div class="filter-section">
+      <div class="filter-label">DAY</div>
+      <div id="drawer-day-list" class="filter-chips"></div>
+    </div>
+
+    <!-- ブランド / シリーズ（タブ切替＋件数付き） -->
+    <div class="filter-section tab-section">
+      <div class="tab-header">
+        <button type="button" class="tab-btn active" data-tab="tab-brand">ブランド</button>
+        <button type="button" class="tab-btn" data-tab="tab-series">シリーズ</button>
+      </div>
+
+      <div class="tab-content">
+        <!-- ブランド一覧 -->
+        <div id="tab-brand" class="tab-pane active">
+          <ul class="count-list" id="drawer-brand-list"></ul>
+        </div>
+
+        <!-- シリーズ一覧 -->
+        <div id="tab-series" class="tab-pane">
+          <ul class="count-list" id="drawer-series-list"></ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</aside>
+
+
+
+  <script src="script.js"></script>
+
+
+
+
+
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <!-- 1. サイトロゴ・説明（1列目） -->
+    <div class="footer-brand">
+      <h2 class="footer-logo">
+        ATTIC
+        <p>by room38</p>
+      </h2>
+      <p class="footer-catch">
+        毎日を共にするからこそ。<br>
+        どれを選べばいい？を解決する、<br>
+        手帳検索・比較ポータルサイト。
+      </p>
+      <div class="sns-link">
+        <a href="" aria-label="instagram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2.2c3.2 0 3.6 0 4.9.07 3.3.15 4.8 1.7 5 5 .06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.15 3.3-1.7 4.8-5 5-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-3.3-.15-4.8-1.7-5-5C2.04 15.6 2 15.2 2 12s0-3.6.07-4.9c.15-3.3 1.7-4.8 5-5C8.4 2.04 8.8 2 12 2.2zm0 3.1A6.7 6.7 0 1 0 18.7 12 6.7 6.7 0 0 0 12 5.3zm0 11a4.3 4.3 0 1 1 4.3-4.3 4.3 4.3 0 0 1-4.3 4.3zM18.9 5a1.56 1.56 0 1 0 1.56 1.56A1.56 1.56 0 0 0 18.9 5z"></path>
+          </svg>
+        </a>
+        <a href="" aria-label="X" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24">
+            <path d="M17.5 3h3l-6.6 7.6L21.7 21h-5.9l-4.6-6-5.3 6H3l7-8L2.7 3h6l4.2 5.5L17.5 3z"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- 2. カタログ（2列目） -->
+    <div class="footer-nav footer-catalog">
+      <h4>catalog</h4>
+      <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="list.html">手帳一覧</a></li>
+        <li><a href="favorite.html">お気に入り</a></li>
+        <li><a href="">手帳を探す</a></li>
+      </ul>
+    </div>
+
+    <!-- 3. インフォ（3列目：一番右） -->
+    <div class="footer-nav footer-info">
+      <h4>info</h4>
+      <ul>
+        <li><a href="about.html">サイトについて</a></li>
+        <li><a href="https://forms.gle/e5zEDPb8fkNQuRz68" target="_blank">情報提供</a></li>
+        <li><a href="https://forms.gle/ectSCc9QPbd6UNJM6" target="_blank">お問い合わせ</a></li>
+        <li><a href="privacy_policy.html">プライバシーポリシー＆免責事項</a></li>
+      </ul>
+    </div>
+
+    <!-- 4. 免責事項（下段：中央と右の2/3幅） -->
+    <div class="footer-disclaimer">
+      <p>
+        当サイトに掲載されている手帳の価格・仕様等の情報は各メーカー等の発表に基づき更新しておりますが、正確性を保証するものではありません。<br>
+        最新情報は必ず各公式サイトをご確認ください。<br>
+        ご提供いただいた情報・画像はサイトやSNSで紹介させていただく場合がございます。<br>
+        また、当サイトはアフィリエイトプログラムに参加しており、適正な報酬を得る場合があります。<br>
+      </p>
+    </div>
+  </div>
+
+  <!-- コピーライト -->
+  <div class="footer-copyright">
+    <small>&copy; room38.plannercatalog All Rights Reserved.</small>
+  </div>
+
+</footer>
+</body>
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>商品比較 | PLANNER CATALOG</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .compare-wrapper {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .compare-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    .back-link {
+      color: #64748b;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .back-link:hover {
+      color: #0f172a;
+    }
+
+    /* 1つのカードコンテナ */
+    .compare-single-card {
+      background-color: #ffffff;
+      border-radius: 16px;
+      padding: 32px 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      border: 1px solid #e2e8f0;
+    }
+
+    /* 3列レイアウト（左商品 : 中央項目 : 右商品） */
+    .compare-grid-table {
+      display: grid;
+      grid-template-columns: 1fr 120px 1fr;
+      gap: 16px 0;
+      align-items: center;
+    }
+
+    /* 行区切り線 */
+    .grid-row-divider {
+      grid-column: 1 / -1;
+      height: 1px;
+      background-color: #f1f5f9;
+      margin: 8px 0;
+    }
+
+    .product-col {
+      text-align: center;
+      padding: 0 12px;
+    }
+
+    .label-col {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: #64748b;
+      background-color: #f8fafc;
+      padding: 8px 0;
+      border-radius: 6px;
+    }
+
+    .compare-img-wrap {
+      width: 100%;
+      max-width: 200px;
+      aspect-ratio: 1/1;
+      background-color: #f8fafc;
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 0 auto 12px;
+      border: 1px solid #f1f5f9;
+    }
+
+    .compare-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .compare-brand {
+      font-size: 12px;
+      color: #94a3b8;
+      margin-bottom: 4px;
+    }
+
+    .compare-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #0f172a;
+      line-height: 1.4;
+    }
+
+    .compare-price {
+      font-size: 18px;
+      font-weight: 700;
+      color: #2563eb;
+    }
+
+    .compare-text {
+      font-size: 14px;
+      color: #334155;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 640px) {
+      .compare-grid-table {
+        grid-template-columns: 1fr 90px 1fr;
+      }
+      .label-col {
+        font-size: 11px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">PLANNER CATALOG</a>
+      
+      <div class="header-actions">
+      <!-- 検索ボタン -->
+      <button type="button" class="icon-btn" aria-label="検索">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </button>
+      
+        <!-- 2. お気に入り -->
+      <button type="button" class="icon-btn" onclick="location.href='favorite.html';" aria-label="お気に入り">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+        </svg>
+      </button>
+
+        <!-- 3. ハンバーガーボタン -->
+        <button type="button" class="header-icon-btn" id="open-menu-btn" aria-label="メニューを開く">
+          <div class="hamburger-btn">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- メインコンテンツ -->
+  <main class="compare-wrapper">
+    <div class="compare-header">
+      <h1>商品比較</h1>
+      <a href="favorite.html" class="back-link">← お気に入り一覧に戻る</a>
+    </div>
+
+    <div class="compare-single-card">
+      <div id="compare-container"></div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    const SAFE_FALLBACK_IMAGE = 'data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%20viewBox%3D%220%200%20400%20400%22%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20fill%3D%22%23f1f5f9%22%2F%3E%3Ctext%20x%3D%2250%25%22%20y%3D%2250%25%22%20dominant-baseline%3D%22middle%22%20text-anchor%3D%22middle%22%20font-family%3D%22sans-serif%22%20font-size%3D%2214px%22%20font-weight%3D%22500%22%20fill%3D%22%2394a3b8%22%3ENO%20IMAGE%3C%2Ftext%3E%3C%2Fsvg%3E';
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      const container = document.getElementById('compare-container');
+      
+      const params = new URLSearchParams(window.location.search);
+      const rawIds = params.get('ids');
+      const ids = rawIds ? rawIds.split(',').map(s => decodeURIComponent(s).trim()) : [];
+
+      if (ids.length < 2) {
+        container.innerHTML = '<p style="text-align: center; color: #64748b; padding: 40px 0;">比較するには商品を2つ選択してください。</p>';
+        return;
+      }
+
+      try {
+        const response = await fetch('./data.json');
+        if (!response.ok) throw new Error('data.json の読み込みに失敗しました');
+        const allProducts = await response.json();
+
+        const findProduct = (targetId) => {
+          return allProducts.find(p => String(p.id).trim().toLowerCase() === String(targetId).trim().toLowerCase());
+        };
+
+        const p1 = findProduct(ids[0]);
+        const p2 = findProduct(ids[1]);
+
+        if (!p1 || !p2) {
+          container.innerHTML = '<p style="text-align: center; color: #64748b; padding: 40px 0;">指定された商品データが見つかりませんでした。</p>';
+          return;
+        }
+
+        const getPrice = (p) => {
+          if (p.variants && p.variants.length > 0 && p.variants[0].price_jpy) {
+            return '¥' + Number(p.variants[0].price_jpy).toLocaleString();
+          }
+          if (p.price_jpy) return '¥' + Number(p.price_jpy).toLocaleString();
+          if (p.price) return '¥' + Number(p.price).toLocaleString();
+          return '---';
+        };
+
+        const getSize = (p) => {
+          if (p.variants && p.variants.length > 0 && p.variants[0].size) {
+            return p.variants[0].size;
+          }
+          return p.size || '---';
+        };
+
+        const getImg = (p) => {
+          let url = p.image_url || p.image;
+          if (!url && p.variants && p.variants.length > 0) {
+            url = p.variants[0].image_url;
+          }
+          return (url && url.trim() !== '') ? url : SAFE_FALLBACK_IMAGE;
+        };
+
+        const getFeatures = (p) => {
+          if (p.features && p.features.trim() !== '') {
+            return p.features.split(',').join(' / ');
+          }
+          return p.description || '---';
+        };
+
+        container.innerHTML = `
+          <div class="compare-grid-table">
+            
+            <!-- 1. 画像 & 商品名（中央の「商品」ラベルを削除して空要素を配置） -->
+            <div class="product-col">
+              <div class="compare-img-wrap">
+                <img src="${getImg(p1)}" 
+                     alt="${p1.product_name || p1.name || ''}" 
+                     onerror="this.onerror=null; this.src='${SAFE_FALLBACK_IMAGE}';">
+              </div>
+              <div class="compare-brand">${p1.brand_name || p1.brand || ''}</div>
+              <div class="compare-title">${p1.product_name || p1.name || ''}</div>
+            </div>
+
+            <div></div> <!-- レイアウト維持用スペース -->
+
+            <div class="product-col">
+              <div class="compare-img-wrap">
+                <img src="${getImg(p2)}" 
+                     alt="${p2.product_name || p2.name || ''}" 
+                     onerror="this.onerror=null; this.src='${SAFE_FALLBACK_IMAGE}';">
+              </div>
+              <div class="compare-brand">${p2.brand_name || p2.brand || ''}</div>
+              <div class="compare-title">${p2.product_name || p2.name || ''}</div>
+            </div>
+
+            <div class="grid-row-divider"></div>
+
+            <!-- 2. 価格 -->
+            <div class="product-col">
+              <div class="compare-price">${getPrice(p1)}</div>
+            </div>
+
+            <div class="label-col">価格（税込）</div>
+
+            <div class="product-col">
+              <div class="compare-price">${getPrice(p2)}</div>
+            </div>
+
+            <div class="grid-row-divider"></div>
+
+            <!-- 3. タイプ -->
+            <div class="product-col">
+              <div class="compare-text">${p1.layout_type || p1.type || '---'}</div>
+            </div>
+
+            <div class="label-col">タイプ</div>
+
+            <div class="product-col">
+              <div class="compare-text">${p2.layout_type || p2.type || '---'}</div>
+            </div>
+
+            <div class="grid-row-divider"></div>
+
+            <!-- 4. サイズ -->
+            <div class="product-col">
+              <div class="compare-text">${getSize(p1)}</div>
+            </div>
+
+            <div class="label-col">サイズ</div>
+
+            <div class="product-col">
+              <div class="compare-text">${getSize(p2)}</div>
+            </div>
+
+            <div class="grid-row-divider"></div>
+
+            <!-- 5. 特徴 -->
+            <div class="product-col">
+              <div class="compare-text">${getFeatures(p1)}</div>
+            </div>
+
+            <div class="label-col">特徴</div>
+
+            <div class="product-col">
+              <div class="compare-text">${getFeatures(p2)}</div>
+            </div>
+
+          </div>
+        `;
+
+      } catch (error) {
+        console.error('比較データの表示エラー:', error);
+        container.innerHTML = '<p style="text-align: center; color: #ef4444; padding: 40px 0;">データの読み込みに失敗しました。</p>';
+      }
+    });
+  </script>
+
+    <footer>
+    <p>© room38.plannercatalog</p>
+  </footer>
+</body>
+</html>

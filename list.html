@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New&display=swap" rel="stylesheet">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>検索結果 | ATTIC</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">ATTIC</a>
+      
+      <div class="header-actions">
+      <!-- 検索ボタン -->
+      <button type="button" class="icon-btn" aria-label="検索">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </button>
+      
+        <!-- 2. お気に入り -->
+      <button type="button" class="icon-btn" onclick="location.href='favorite.html';" aria-label="お気に入り">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+        </svg>
+      </button>
+
+        <!-- 3. ハンバーガーボタン -->
+        <button type="button" class="header-icon-btn" id="open-menu-btn" aria-label="メニューを開く">
+          <div class="hamburger-btn">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 検索結果コンテンツ -->
+  <main class="main-content">
+    <h1 class="page-title" id="search-title">商品一覧</h1>
+
+<div class="sort-container">
+  <label for="sort-select">並び替え：</label>
+  <select id="sort-select">
+    <option value="default">標準（おすすめ順）</option>
+    <option value="brand-asc">ブランド名順（五十音）</option>
+    <option value="product-asc">商品名順（五十音）</option>
+    <option value="price-asc">価格が安い順</option>
+    <option value="price-desc">価格が高い順</option>
+    <option value="weight-asc">重さが軽い順</option>
+    <option value="month-asc">始まり月順</option>
+    <option value="pages-desc">ページ数が多い順</option>
+  </select>
+</div>
+
+<!-- 商品一覧描画コンテナ -->
+<div id="product-list-container" class="product-grid"></div>
+    <!-- 商品カード描画エリア -->
+    <div id="product-list" class="product-grid"></div>
+
+    <!-- ページネーション描画エリア -->
+    <div id="pagination" class="pagination"></div>
+
+
+<!-- 商品・フォーマットカードの描画エリア -->
+<div id="format-guide-container"></div>
+  </main>
+
+  <script src="list.js"></script>
+
+  <!-- オーバーレイ背景 -->
+  <div id="drawer-overlay" class="drawer-overlay"></div>
+
+  <!-- ドロワーメニュー本体 -->
+  <aside id="drawer-menu" class="drawer-menu">
+    
+    <!-- ① 上部アイコンヘッダー -->
+    <div class="drawer-header">
+      <div class="header-icons-right">
+        <!-- 検索ボタン -->
+        <button type="button" class="icon-btn" aria-label="検索">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+
+        <!-- お気に入りボタン -->
+        <button type="button" class="icon-btn" onclick="location.href='favorite.html';" aria-label="お気に入り">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+          </svg>
+        </button>
+
+        <!-- アカウントボタン -->
+        <button type="button" class="icon-btn" aria-label="アカウント">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </button>
+
+        <!-- 閉じる（×）ボタン -->
+        <button type="button" id="close-menu-btn" class="icon-btn close-btn" aria-label="閉じる">
+          <span class="cross-bar"></span>
+          <span class="cross-bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ② JSONから自動生成するエリア -->
+    <div class="drawer-body">
+      
+      <!-- キーワード検索バー -->
+      <div class="search-box">
+        <input type="text" placeholder="キーワード検索" id="drawer-keyword-input">
+        <button type="button" class="search-submit-btn" aria-label="検索実行">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- カラー -->
+      <div class="filter-section">
+        <div class="filter-label">Color</div>
+        <div class="color-picker-grid" id="drawer-color-list"></div>
+      </div>
+
+      <!-- サイズ -->
+      <div class="filter-section">
+        <div class="filter-label">Size</div>
+        <div class="chip-group" id="drawer-size-list"></div>
+      </div>
+
+      <!-- レイアウト（フォーマット） -->
+      <div class="filter-section">
+        <div class="filter-label">Layout</div>
+        <div class="layout-grid" id="drawer-layout-list"></div>
+      </div>
+
+      <!-- 始まり（月・曜日） -->
+      <div class="filter-section">
+        <div class="filter-label">Start (Month / Day)</div>
+        <div class="chip-group" id="drawer-start-list"></div>
+      </div>
+
+      <!-- ブランド / シリーズ（タブ切替＋件数付き） -->
+      <div class="filter-section tab-section">
+        <div class="tab-header">
+          <button type="button" class="tab-btn active" data-tab="tab-brand">ブランド</button>
+          <button type="button" class="tab-btn" data-tab="tab-series">シリーズ</button>
+        </div>
+
+        <div class="tab-content">
+          <!-- ブランド一覧 -->
+          <div id="tab-brand" class="tab-pane active">
+            <ul class="count-list" id="drawer-brand-list"></ul>
+          </div>
+
+          <!-- シリーズ一覧 -->
+          <div id="tab-series" class="tab-pane">
+            <ul class="count-list" id="drawer-series-list"></ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </aside>
+  <footer>
+    <p>© room38.plannercatalog</p>
+  </footer>
+</body>
+</html>
